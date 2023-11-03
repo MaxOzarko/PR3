@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozarko PI-20-02</title>
+</head>
+<style>
+    #field {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        background-color: green;
+        border: 8px solid darkgreen;
+    }
+
+    #ball {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 50%;
+    }
+</style>
+<body>
+    <p>При кліці по полю м'яч повинен переміщатись на місце кліка.</p>
+    <div id="field">
+        <div id="ball"></div>
+    </div>
+
+    <script>
+        const field = document.getElementById('field');
+        const ball = document.getElementById('ball');
+        let ballWidth = ball.clientWidth;
+        let ballHeight = ball.clientHeight;
+
+        field.addEventListener('click', (event) => {
+            const fieldRect = field.getBoundingClientRect();
+            const fieldLeft = fieldRect.left;
+            const fieldTop = fieldRect.top;
+
+            const clickX = event.clientX - fieldLeft;
+            const clickY = event.clientY - fieldTop;
+
+            const ballX = clickX - ballWidth / 2;
+            const ballY = clickY - ballHeight / 2;
+
+            if (ballX < 0) {
+                ballX = 0;
+            } else if (ballX > field.clientWidth - ballWidth) {
+                ballX = field.clientWidth - ballWidth;
+            }
+
+            if (ballY < 0) {
+                ballY = 0;
+            } else if (ballY > field.clientHeight - ballHeight) {
+                ballY = field.clientHeight - ballHeight;
+            }
+
+            ball.style.left = ballX + 'px';
+            ball.style.top = ballY + 'px';
+        });
+    </script>
+</body>
+</html>

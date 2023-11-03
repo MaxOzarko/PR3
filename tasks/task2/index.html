@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozarko PI-20-02</title>
+    <style>
+        .carousel-container {
+            position: relative;
+            width: 600px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .image-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            transition: transform 0.3s;
+        }
+
+        .image-list li {
+            flex: 0 0 200px;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        .prev-button,
+        .next-button {
+            background-color: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+        }
+
+        .prev-button {
+            left: 0;
+        }
+
+        .next-button {
+            right: 0;
+        }
+
+        .prev-button:hover,
+        .next-button:hover {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <p>Реалізувати «Карусель» - стрічку зображень, яку можна гортати вліво-вправо
+        натисненням на стрілки.</p>
+    <div class="carousel-container">
+        <ul class="image-list">
+            <li><img src="../task2/images/pngwing1.png" alt="Image 1"></li>
+            <li><img src="../task2/images/pngwing2.png" alt="Image 2"></li>
+            <li><img src="../task2/images/pngwing3.png" alt="Image 3"></li>
+            <li><img src="../task2/images/pngwing4.png" alt="Image 4"></li>
+            <li><img src="../task2/images/pngwing5.png" alt="Image 5"></li>
+        </ul>
+        <button class="prev-button">←</button>
+        <button class="next-button">→</button>
+    </div>
+    <script>
+        const imageList = document.querySelector('.image-list');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+        let scrollPosition = 0;
+
+        prevButton.addEventListener('click', () => {
+            if (scrollPosition > 0) {
+                scrollPosition -= 200;
+                imageList.style.transform = `translateX(-${scrollPosition}px)`;
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (scrollPosition < (imageList.scrollWidth - imageList.clientWidth)) {
+                scrollPosition += 200;
+                imageList.style.transform = `translateX(-${scrollPosition}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

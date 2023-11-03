@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozarko PI-20-02</title>
+</head>
+<style>
+    .message {
+        background-color: lightgreen;
+        border: 3px solid green;
+        padding: 10px;
+        margin: 5px;
+        width: 500px;
+    }
+</style>
+    <body>
+        <p>Є список повідомлень. Додати до кожного повідомлення по кнопці для його
+            приховування.</p>
+            <div class="message">
+                <h3>повідомлення 1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Officiis quibusdam veritatis dolor vitae, dolorem beatae 
+                    dignissimos esse exercitationem, expedita minima natus.</p>
+                <button class="hide-button">Приховати</button>
+            </div>
+            
+            <div class="message">
+                <h3>повідомлення 2</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                <button class="hide-button">Приховати</button>
+            </div>
+
+            <div class="message">
+                <h3>повідомлення 3</h3>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Officiis quibusdam veritatis dolor vitae, dolorem beatae 
+                    dignissimos esse exercitationem, expedita minima natus. 
+                    Molestiae alias eos nobis tempora omnis deserunt ut officiis?</p>
+                <button class="hide-button">Приховати</button>
+            </div>
+        <script>
+            const hideButtons = document.querySelectorAll('.hide-button');
+            hideButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const message = button.parentNode;
+                message.style.display = 'none';
+            });
+            });
+        </script>        
+    </body>
+</html>
